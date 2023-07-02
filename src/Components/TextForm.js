@@ -13,8 +13,14 @@ export default function TextForm(props) {
         let newText = " ";
         setText(newText);
     }
+    const handleCopy = () =>{
+        var text = document.getElementById("myText");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to clipboard!" , "success")
+    }
+
     const handleOnChange = (event)=>{
-       
         setText(event.target.value)
     }
 
@@ -31,6 +37,7 @@ export default function TextForm(props) {
             <button className="btn btn-outline-primary mx-2 " onClick={handleUpClick}> Uppercase </button>
             <button className="btn btn-outline-primary mx-1" onClick={handleLoClick}> Lowercase </button>
             <button className="btn btn-outline-primary mx-1" onClick={handleClr}> Clear </button>
+            <button className="btn btn-outline-primary mx-1" onClick={handleCopy}> Copy </button>
           
             
         </div>
